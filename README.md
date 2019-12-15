@@ -47,8 +47,8 @@ npm i svelte-css-in-js
         }
     }
 
-		// You can transform css as soon as you want.
-		// The value of the key remaining in the <header> will not be wasted.
+    // You can transform css as soon as you want.
+    // The value of the key remaining in the <header> will not be wasted.
     setTimeout(()=>{
         style.background.color = 'yellow'
     }, 3000)
