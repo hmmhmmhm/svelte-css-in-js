@@ -67,12 +67,11 @@ exports.attachStyles = function (styles, key) {
                     Object.keys(styles).forEach(function (key) {
                         str += key + "{" + css_in_js_utils_1.cssifyObject(styles[key]) + "}";
                     });
-                    console.log('origin', str);
-                    return [4 /*yield*/, postcss_1["default"]([autoprefixer_1["default"]]).process(str)];
+                    return [4 /*yield*/, postcss_1["default"]([autoprefixer_1["default"]({
+                                overrideBrowserslist: 'cover 99.5%'
+                            })]).process(str)];
                 case 1:
                     css = (_a.sent()).css;
-                    console.log('check', postcss_1["default"]([autoprefixer_1["default"]]).process);
-                    console.log('converted', css);
                     inject_1.inject(css, key);
                     return [2 /*return*/];
             }

@@ -24,11 +24,9 @@ export const attachStyles = async (styles = {}, key: string) => {
 	Object.keys(styles).forEach((key) => {
 		str += `${key}{${cssifyObject(styles[key])}}`
 	})
-	console.log('origin', str)
-	const {css} = await postcss([ autoprefixer ]).process(str)
-	console.log('check', postcss([ autoprefixer ]).process)
-	console.log('converted', css)
-	
+	const {css} = await postcss([ autoprefixer({
+		overrideBrowserslist: 'cover 99.5%'
+	}) ]).process(str)
 
 	inject(
 		css,
