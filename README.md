@@ -8,6 +8,7 @@ With svelte-css-in-js, you can use css in javascript (and typescript). You can u
 
 ## Spec
 
+- Add automatic prefixes through Autoprefixer.
 - Entering JSON data to generate css class.
 - When data entered in JSON format is changed, only changes are apply as dom.
 - Reuse of css keys that prevent conflicts between components without generating them each time.
