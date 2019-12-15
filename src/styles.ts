@@ -10,23 +10,28 @@
 import { inject } from './inject'
 import { parse } from './parse'
 import { cssifyObject  } from 'css-in-js-utils'
+import autoprefixer from 'autoprefixer'
+import postcss from 'postcss'
 
-export const attachStyles = (styles = {}, key: string) => {
+export const attachStyles = async (styles = {}, key: string) => {
 	if (!styles || typeof styles !== `object`)
 		throw new Error(`'styles' must be a defined object.`)
 	if (!key || typeof key !== `string` || key.length < 1)
 		throw new Error(`'key' must be a defined string and not be empty.`)
 
+	let str = ``
+
+	Object.keys(styles).forEach((key) => {
+		str += `${key}{${cssifyObject(styles[key])}}`
+	})
+	console.log('origin', str)
+	const {css} = await postcss([ autoprefixer ]).process(str)
+	console.log('check', postcss([ autoprefixer ]).process)
+	console.log('converted', css)
+	
+
 	inject(
-		(() => {
-			let str = ``
-
-			Object.keys(styles).forEach((key) => {
-				str += `${key}{${cssifyObject(styles[key])}}`
-			})
-
-			return str
-		})(),
+		css,
 		key
 	)
 }

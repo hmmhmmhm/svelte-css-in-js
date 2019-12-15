@@ -1,6 +1,6 @@
 {
   "name": "svelte-css-in-js",
-  "version": "0.9.12",
+  "version": "0.9.13",
   "description": "📦 This module makes to handle css in js form from svelte.",
   "scripts": {
     "build": "tsc",
@@ -13,9 +13,11 @@
   "author": "hmmhmmhm",
   "license": "MIT",
   "dependencies": {
+    "autoprefixer": "^9.7.3",
     "css-in-js-utils": "^3.0.4",
     "deepmerge": "^4.2.2",
-    "flat": "^5.0.0"
+    "flat": "^5.0.0",
+    "postcss": "^7.0.24"
   },
   "devDependencies": {
     "@types/node": "^12.7.5"
