@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 var random_1 = require("./random");
-var deepmerge_1 = __importDefault(require("deepmerge"));
 var ready_1 = require("./ready");
 var styles_1 = require("./styles");
-exports.makeCSS = function (_a, svelte) {
-    var _b = _a.style, style = _b === void 0 ? {} : _b, _c = _a.theme, theme = _c === void 0 ? {} : _c;
+var deepmerge_1 = __importDefault(require("deepmerge"));
+exports.makeCSS = function (_a) {
+    var _b = _a.style, style = _b === void 0 ? {} : _b, _c = _a.theme, theme = _c === void 0 ? {} : _c, svelte = _a.svelte;
     if (!svelte || !svelte.afterUpdate)
         return;
     var cssId = "svelte-" + random_1.randomString(7);

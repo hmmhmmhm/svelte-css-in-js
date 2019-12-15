@@ -1,6 +1,6 @@
 {
   "name": "svelte-css-in-js",
-  "version": "0.9.11",
+  "version": "0.9.12",
   "description": "📦 This module makes to handle css in js form from svelte.",
   "scripts": {
     "build": "tsc",
