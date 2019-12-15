@@ -2,19 +2,20 @@ import { randomString } from './random'
 import deepmerge from 'deepmerge'
 import { ready } from './ready'
 import { createStyles } from './styles'
-import { afterUpdate } from 'svelte'
 
-export const makeCSS = ({style = {}, theme = {}}) => {
+export const makeCSS = ({style = {}, theme = {}}, svelte) => {
+    if(!svelte || !svelte.afterUpdate) return
+
     const cssId = `svelte-${randomString(7)}`
-    const mergedStyle = deepmerge(style, theme)
 
     let css = {}
     const applyCSS = () => {
         ready()
-        css = createStyles(mergedStyle, cssId)
+        const mergedStyle = deepmerge(style, theme)
+        css = createStyles(JSON.parse(JSON.stringify(mergedStyle)), cssId)
     }
     applyCSS()
-    afterUpdate(applyCSS)
+    svelte.afterUpdate(applyCSS)
     return css
 }
 
