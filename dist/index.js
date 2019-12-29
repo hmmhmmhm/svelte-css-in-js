@@ -19,7 +19,8 @@ exports.makeCSS = function (_a) {
         css = styles_1.createStyles(JSON.parse(JSON.stringify(mergedStyle)), cssId);
     };
     applyCSS();
-    svelte.afterUpdate(applyCSS);
+    if (svelte)
+        svelte.afterUpdate(applyCSS);
     return css;
 };
 exports["default"] = exports.makeCSS;

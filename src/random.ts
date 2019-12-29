@@ -9,17 +9,16 @@ const choices = nums.concat(lowerCaseLetters, upperCaseLetters, specialChars)
 /**
  * MIT License
  * Copyright (c) 2019 Elijah Mooring
- * 
+ *
  * @license MIT
  * @author Elijah Mooring
  * @file https://github.com/Vehmloewff/shineup/blob/master/lib/random.js
  */
 export const randomString = (length: number = 7) => {
-	const getChar = () => choices[Math.floor(Math.random() * choices.length)]
+    const getChar = () => choices[Math.floor(Math.random() * choices.length)]
 
-	let chars = ``
-	for (let cur = 0; cur < length; cur++)
-		chars += getChar()
+    let chars = ``
+    for (let cur = 0; cur < length; cur++) chars += getChar()
 
-	return chars
+    return chars
 }

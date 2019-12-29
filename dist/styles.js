@@ -67,9 +67,11 @@ exports.attachStyles = function (styles, key) {
                     Object.keys(styles).forEach(function (key) {
                         str += key + "{" + css_in_js_utils_1.cssifyObject(styles[key]) + "}";
                     });
-                    return [4 /*yield*/, postcss_1["default"]([autoprefixer_1["default"]({
+                    return [4 /*yield*/, postcss_1["default"]([
+                            autoprefixer_1["default"]({
                                 overrideBrowserslist: 'cover 99.5%'
-                            })]).process(str)];
+                            }),
+                        ]).process(str, { from: undefined, to: undefined })];
                 case 1:
                     css = (_a.sent()).css;
                     inject_1.inject(css, key);

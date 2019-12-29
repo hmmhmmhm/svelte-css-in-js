@@ -15,7 +15,8 @@ var flat_1 = __importDefault(require("flat"));
 exports.isLayered = function (obj) {
     var layerFound = false;
     for (var possibleLayer in obj) {
-        if (!/^\$/.test(possibleLayer) && typeof obj[possibleLayer] === "object") {
+        if (!/^\$/.test(possibleLayer) &&
+            typeof obj[possibleLayer] === 'object') {
             layerFound = true;
             break;
         }
@@ -24,7 +25,7 @@ exports.isLayered = function (obj) {
 };
 exports.addDotToClassName = function (className) {
     if (!/^(\.|\$)/.test(className))
-        return "." + className;
+        return '.' + className;
     else
         return className;
 };
@@ -45,10 +46,10 @@ exports.flattenObjectChildren = function (obj, id) {
         var callVisibileFunctions = function (obj) {
             funcsExist = false;
             var _loop_1 = function (key) {
-                if (typeof obj[key] === "function") {
+                if (typeof obj[key] === 'function') {
                     var rootKeys = key.split(delimiter);
                     var lastKey = rootKeys.pop();
-                    var className = rootKeys[0].replace(/^\./, "");
+                    var className = rootKeys[0].replace(/^\./, '');
                     var res_1 = obj[key]({
                         obj: savedObject,
                         parent: exports.getParent(obj, delimiter),
@@ -61,7 +62,7 @@ exports.flattenObjectChildren = function (obj, id) {
                     if (lastKey && /^&/.test(lastKey)) {
                         // Spread it over the parent
                         delete obj[key];
-                        if (typeof res_1 !== "object")
+                        if (typeof res_1 !== 'object')
                             throw new Error("The value of all keys starting with an '&' symbol of type 'function' must return an object.");
                         var rootKey_1 = rootKeys.join(delimiter);
                         Object.keys(res_1).forEach(function (newKey) {
@@ -86,9 +87,9 @@ exports.flattenObjectChildren = function (obj, id) {
         return obj;
     };
     var changeKey = function (key) {
-        var levels = key.split("|");
+        var levels = key.split('|');
         var highestLevel = levels.pop();
-        return levels.join("").replace(/\$/g, " ") + "|" + highestLevel;
+        return levels.join('').replace(/\$/g, ' ') + "|" + highestLevel;
     };
     var flatObj = callAllFunctions(obj);
     var newObj = {};
@@ -104,15 +105,15 @@ exports.parse = function (obj, id) {
     if (id === void 0) { id = 'svelte'; }
     var _a;
     // Check the types
-    if (typeof obj !== "object")
+    if (typeof obj !== 'object')
         throw new Error("The first paramater must be of type 'object'.  Recieved type '" + typeof obj + "';");
-    if (typeof id !== "string")
+    if (typeof id !== 'string')
         throw new Error("The second paramater must be of type 'string'.  Recieved type '" + typeof id + "';");
     if (JSON.stringify(obj) === "{}")
         return { css: {}, classes: {} };
     // All the types are valid.  Carry on.
     if (!exports.isLayered(obj)) {
-        var defaultName = "default";
+        var defaultName = 'default';
         var defaultCSS = (_a = {}, _a[defaultName] = {}, _a);
         defaultCSS[defaultName] = obj;
         obj = defaultCSS;

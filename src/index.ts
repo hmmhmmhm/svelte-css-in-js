@@ -3,8 +3,8 @@ import { ready } from './ready'
 import { createStyles } from './styles'
 import deepmerge from 'deepmerge'
 
-export const makeCSS = ({style = {}, theme = {}, svelte}) => {
-    if(!svelte || !svelte.afterUpdate) return
+export const makeCSS = ({ style = {}, theme = {}, svelte }) => {
+    if (!svelte || !svelte.afterUpdate) return
 
     const cssId = `svelte-${randomString(7)}`
 
@@ -15,7 +15,7 @@ export const makeCSS = ({style = {}, theme = {}, svelte}) => {
         css = createStyles(JSON.parse(JSON.stringify(mergedStyle)), cssId)
     }
     applyCSS()
-    if(svelte) svelte.afterUpdate(applyCSS)
+    if (svelte) svelte.afterUpdate(applyCSS)
     return css
 }
 
