@@ -15,7 +15,7 @@ export const makeCSS = ({style = {}, theme = {}, svelte}) => {
         css = createStyles(JSON.parse(JSON.stringify(mergedStyle)), cssId)
     }
     applyCSS()
-    svelte.afterUpdate(applyCSS)
+    if(svelte) svelte.afterUpdate(applyCSS)
     return css
 }
 
