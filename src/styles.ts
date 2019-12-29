@@ -26,7 +26,7 @@ export const attachStyles = async (styles = {}, key: string) => {
 	})
 	const {css} = await postcss([ autoprefixer({
 		overrideBrowserslist: 'cover 99.5%'
-	}) ]).process(str)
+	}) ]).process(str, { from: undefined, to: undefined})
 
 	inject(
 		css,
