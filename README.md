@@ -24,7 +24,6 @@ npm i svelte-css-in-js
 
 ```svelte
 <script>
-    import * as svelte from 'svelte'
     import { makeCSS } from 'svelte-css-in-js'
 
     export let a = ''
@@ -54,7 +53,7 @@ npm i svelte-css-in-js
         style.background.color = 'yellow'
     }, 3000)
 
-    const css = makeCSS({ style, theme, svelte })
+    const css = makeCSS({ style, theme })
 </script>
 
 <div class='{css.background}'>

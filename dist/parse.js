@@ -101,9 +101,9 @@ exports.flattenObjectChildren = function (obj, id) {
     return flat_1["default"].unflatten(newObj, { delimiter: delimiter });
 };
 exports.parse = function (obj, id) {
+    var _a;
     if (obj === void 0) { obj = {}; }
     if (id === void 0) { id = 'svelte'; }
-    var _a;
     // Check the types
     if (typeof obj !== 'object')
         throw new Error("The first paramater must be of type 'object'.  Recieved type '" + typeof obj + "';");
