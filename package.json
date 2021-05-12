@@ -20,7 +20,7 @@
     "css-in-js-utils": "^3.0.4",
     "deepmerge": "^4.2.2",
     "flat": "^5.0.0",
-    "postcss": "^7.0.24",
+    "postcss": "^8.2.10",
     "svelte": "*"
   },
   "devDependencies": {
